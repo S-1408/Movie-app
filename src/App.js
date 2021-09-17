@@ -5,7 +5,6 @@ import MovieDetails from './components/MovieDetails/MovieDetails';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Home from './components/Home/Home';
 import Header from "./components/Header/Header";
-import MovieCard from "./components/MovieCard/MovieCard";
 function App() {
   return (
     <div >
@@ -14,7 +13,7 @@ function App() {
      <Header/>
      <div className="container">
 <Switch>
-<Route path='/' component={Home}/>
+<Route exact path='/' component={Home}/>
        <Route path='/movie/:imdbID' component={MovieDetails}/>
        <Route path='/' component={PageNotFound}/>
       

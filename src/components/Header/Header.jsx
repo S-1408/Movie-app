@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 import './Header.scss'
 function Header() {
     return (
-        <div>
+       
            <div className="header">
-               <Link to="/"></Link>
+               <Link to="/">
                <div className="logo">Movie app</div>
+               </Link>
                <div className="user-image">
                    {/* <img src={} alt="user" /> */}
                </div>
            </div>
-        </div>
+       
     )
 }
 
