@@ -18,8 +18,10 @@ function Home() {
             // dispatch(addMovies(response.data))
         // };
         // fetchMovie();
-        dispatch(fetchAsyncMovie());
-        dispatch(fetchAsyncShow());
+        const movieText = "Harry"
+        const showText ="friends"
+        dispatch(fetchAsyncMovie(movieText));
+        dispatch(fetchAsyncShow(showText));
     },[dispatch])
     return (
         <div>

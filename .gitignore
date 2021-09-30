@@ -5,7 +5,7 @@ node_modules
 /.pnp
 .pnp.js
 
-movie-api-key.js
+
 # testing
 /coverage
 
@@ -13,7 +13,7 @@ movie-api-key.js
 /build
 
 # misc
-
+.env
 .DS_Store
 .env.local
 .env.development.local

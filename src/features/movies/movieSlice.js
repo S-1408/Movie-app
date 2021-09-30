@@ -2,11 +2,11 @@ import { createSlice ,createAsyncThunk} from "@reduxjs/toolkit";
 import movieApi from '../../common/api/movie-api';
 import {APIKey} from '../../common/api/movie-api-key'
 // fetch movies from the api  using middleware
-export const fetchAsyncMovie =createAsyncThunk('movies/fetchAsyncMovie',async()=>{
-    const movieText ="Harry"
+export const fetchAsyncMovie =createAsyncThunk('movies/fetchAsyncMovie',async(term)=>{
+    
 
     const response = await movieApi
-    .get(`?apikey=${APIKey}&s=${movieText}&type=movie`)
+    .get(`?apikey=${APIKey}&s=${term}&type=movie`)
     .catch(err=>{
         console.log(err)
     })
@@ -14,11 +14,11 @@ export const fetchAsyncMovie =createAsyncThunk('movies/fetchAsyncMovie',async()=
 
 })
 // fetch Movies shows from the api using middleware
-export const fetchAsyncShow =createAsyncThunk('shows/fetchAsyncShows',async()=>{
-    const series ="fiends"
+export const fetchAsyncShow =createAsyncThunk('shows/fetchAsyncShows',async(term)=>{
+
 
     const response = await movieApi
-    .get(`?apikey=${APIKey}&s=${series}&type=series`)
+    .get(`?apikey=${APIKey}&s=${term}&type=series`)
     .catch(err=>{
         console.log(err)
     })
@@ -43,7 +43,8 @@ export const fetchAsyncShowDetails =createAsyncThunk('showsdetails/fetchAsyncSho
 const initialState = {
     movies:{},
     shows:{},
-    selectedMovieForShow:{}
+    selectedMovieForShow:{},
+    
 }
 // createSlice is a function that takes
 // 1- initiaState 2- slicename 3- an object of reduces function
@@ -61,6 +62,7 @@ const movieSlice = createSlice({
     extraReducers:{
         [fetchAsyncMovie.pending]:()=>{
             console.log("pending")
+            
         },
         [fetchAsyncMovie.fulfilled]:(state,{payload})=>{
             console.log('fetched successfuly');
@@ -85,5 +87,5 @@ export const{ removeSelectedMovieOrShow} = movieSlice.actions;
 
 export const getAllMovies= (state)=>state.movies.movies;
 export const getAllShows= (state)=>state.movies.shows;
-export const getSelectedMovieForShow =(state)=>state.movies.selectedMovieForShow
+export const getSelectedMovieForShow =(state)=>state.movies.selectedMovieForShow;
 export default movieSlice.reducer;
